@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-securitycheck" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SecurityCheck</name>
+    <js-module name="SecurityCheck" src="www/SecurityCheck.js">
+        <clobbers target="SecurityCheck" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="SecurityCheck">
+                <param name="ios-package" value="SecurityCheck" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/SecurityCheck.swift" />
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
+    </platform>
+</plugin>
