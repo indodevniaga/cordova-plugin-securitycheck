@@ -15,4 +15,7 @@ SecurityCheck.isTampered = function (bundle, onSuccess, onError) {
 SecurityCheck.isEmulationDetected = function (onSuccess, onError) {
     exec(onSuccess, onError, 'SecurityCheck', 'isEmulationDetected', []);
 };
+SecurityCheck.isJailbrokenDetected = function (onSuccess, onError) {
+    exec(onSuccess, onError, 'SecurityCheck', 'isJailbrokenDetected', []);
+};
 module.exports = SecurityCheck;

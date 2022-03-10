@@ -47,4 +47,12 @@ import Foundation
         pluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: isEmulated)
         self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
     }
+
+    @objc(isJailbrokenDetected:)
+    func isJailbrokenDetected(command: CDVInvokedUrlCommand) {
+        let isEmulated = IOSSecuritySuite.amIJailbroken()
+        let pluginResult:CDVPluginResult
+        pluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: isEmulated)
+        self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    }
 }

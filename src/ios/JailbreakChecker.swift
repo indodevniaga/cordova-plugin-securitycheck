@@ -103,11 +103,12 @@ internal class JailbreakChecker {
         return (true, "")
     }
 
+    // "cydia://" URL scheme has been removed. Turns out there is app in the official App Store
+    // that has the cydia:// URL scheme registered, so it may cause false positive
     private static func checkURLSchemes() -> CheckResult {
         var flag: (passed: Bool, failMessage: String) = (true, "")
         let urlSchemes = [
             "undecimus://",
-            "cydia://",
             "sileo://",
             "zbra://",
             "filza://",
@@ -182,6 +183,20 @@ internal class JailbreakChecker {
             "/usr/lib/libsubstitute.dylib",
             "/usr/lib/substrate",
             "/usr/lib/TweakInject",
+            "/var/binpack/Applications/loader.app", // checkra1n
+            "/Applications/FlyJB.app", // Fly JB X
+            "/Applications/Zebra.app", // Zebra
+            "/Library/dpkg/info/kjc.checkra1n.mobilesubstraterepo.list", // checkra1n
+            "/private/etc/apt/preferences.d/checkra1n", // checkra1n
+            "/private/var/checkra1n.dmg", // checkra1n
+            "/private/var/tmp/.opt/com.apple.checkra1nd.plist", // checkra1n
+            "/private/var/tmp/.req/com.apple.checkra1nd.plist", // checkra1n
+            "/Library/LaunchDaemons/re.frida.server.plist",
+            "/Library/dpkg/info/re.frida.server.extrainst_", // frida
+            "/Library/dpkg/info/re.frida.server.list", // frida
+            "/Library/dpkg/info/re.frida.server.md5sums", // frida
+            "/Library/dpkg/info/re.frida.server.prerm", // frida
+            "/private/var/mobile/Library/Caches/com.saurik.Cydia/lists/build.frida.re_._Packages" // frida
         ]
         
         // These files can give false positive in the emulator
