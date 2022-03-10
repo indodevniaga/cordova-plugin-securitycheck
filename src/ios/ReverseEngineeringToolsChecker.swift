@@ -42,7 +42,12 @@ internal class ReverseEngineeringToolsChecker {
     private static func checkExistenceOfSuspiciousFiles() -> Bool {
 
         let paths = [
-            "/usr/sbin/frida-server"
+            "/usr/sbin/frida-server",
+            "/Library/dpkg/info/re.frida.server.extrainst_", // frida
+            "/Library/dpkg/info/re.frida.server.list", // frida
+            "/Library/dpkg/info/re.frida.server.md5sums", // frida
+            "/Library/dpkg/info/re.frida.server.prerm", // frida
+            "/private/var/mobile/Library/Caches/com.saurik.Cydia/lists/build.frida.re_._Packages" // frida
         ]
 
         for path in paths {
